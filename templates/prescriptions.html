@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Prescriptions | MediCare{% endblock %}{% block content %}
+<div class="page-head"><div><h1>Prescriptions</h1><p>Manage patient medication instructions.</p></div><a href="{{url_for('add_prescription')}}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Prescription</a></div>
+<div class="card-panel"><div class="table-responsive"><table class="table align-middle"><thead><tr><th>Patient</th><th>Doctor</th><th>Medicine</th><th>Dosage</th><th>Duration</th><th>Instructions</th><th>Date</th></tr></thead><tbody>
+{% for p in prescriptions %}<tr><td><b>{{p.patient_name}}</b></td><td>{{p.doctor_name}}</td><td><span class="medicine">{{p.medicine}}</span></td><td>{{p.dosage or '-'}}</td><td>{{p.duration or '-'}}</td><td>{{p.instructions or '-'}}</td><td>{{p.created_at}}</td></tr>{% else %}<tr><td colspan="7" class="empty">No prescriptions found.</td></tr>{% endfor %}</tbody></table></div></div>{% endblock %}

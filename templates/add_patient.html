@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block title %}Register Patient | MediCare{% endblock %}{% block content %}
+<div class="page-head"><div><h1>Register Patient</h1><p>Create a new patient record.</p></div><a href="{{url_for('patients')}}" class="btn btn-light">Back</a></div>
+<div class="card-panel form-card"><form method="post"><div class="form-grid">
+<div><label>Full Name *</label><input name="name" required></div><div><label>Age</label><input name="age" type="number" min="0"></div>
+<div><label>Gender</label><select name="gender"><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select></div>
+<div><label>Blood Group</label><select name="blood_group"><option value="">Select</option>{% for b in ['A+','A-','B+','B-','AB+','AB-','O+','O-'] %}<option>{{b}}</option>{% endfor %}</select></div>
+<div><label>Phone</label><input name="phone" type="tel"></div><div><label>Email</label><input name="email" type="email"></div>
+<div class="full"><label>Address</label><textarea name="address" rows="2"></textarea></div><div><label>Emergency Contact</label><input name="emergency_contact"></div>
+</div><div class="form-actions"><a href="{{url_for('patients')}}" class="btn btn-light">Cancel</a><button class="btn btn-primary"><i class="fa-solid fa-check"></i> Register Patient</button></div></form></div>{% endblock %}

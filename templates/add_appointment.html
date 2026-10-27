@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Book Appointment | MediCare{% endblock %}{% block content %}
+<div class="page-head"><div><h1>Book Appointment</h1><p>Schedule a visit with a doctor.</p></div></div><div class="card-panel form-card"><form method="post"><div class="form-grid">
+<div><label>Patient *</label><select name="patient_id" required><option value="">Select patient</option>{% for p in patients %}<option value="{{p.id}}">{{p.name}} — {{p.patient_code}}</option>{% endfor %}</select></div>
+<div><label>Doctor *</label><select name="doctor_id" required><option value="">Select doctor</option>{% for d in doctors %}<option value="{{d.id}}">{{d.name}} — {{d.specialization}}</option>{% endfor %}</select></div>
+<div><label>Date *</label><input name="appointment_date" type="date" required></div><div><label>Time *</label><input name="appointment_time" type="time" required></div>
+<div class="full"><label>Reason / Notes</label><textarea name="reason" rows="3"></textarea></div><div><label>Status</label><select name="status"><option>Scheduled</option><option>Completed</option><option>Cancelled</option></select></div>
+</div><div class="form-actions"><a href="{{url_for('appointments')}}" class="btn btn-light">Cancel</a><button class="btn btn-primary">Book Appointment</button></div></form></div>{% endblock %}

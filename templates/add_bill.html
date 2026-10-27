@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Create Bill | MediCare{% endblock %}{% block content %}
+<div class="page-head"><div><h1>Create Bill</h1><p>Generate a patient bill.</p></div></div><div class="card-panel form-card"><form method="post" oninput="calculateTotal()"><div class="form-grid">
+<div class="full"><label>Patient *</label><select name="patient_id" required><option value="">Select patient</option>{% for p in patients %}<option value="{{p.id}}">{{p.name}} — {{p.patient_code}}</option>{% endfor %}</select></div>
+<div><label>Consultation Fee</label><input id="consultation" name="consultation" type="number" min="0" step="0.01" value="0"></div><div><label>Medicine</label><input id="medicine" name="medicine" type="number" min="0" step="0.01" value="0"></div>
+<div><label>Tests</label><input id="tests" name="tests" type="number" min="0" step="0.01" value="0"></div><div><label>Room Charges</label><input id="room" name="room" type="number" min="0" step="0.01" value="0"></div>
+<div><label>Other Charges</label><input id="other" name="other" type="number" min="0" step="0.01" value="0"></div><div><label>Payment Status</label><select name="payment_status"><option>Pending</option><option>Paid</option></select></div>
+</div><div class="total-box">Total: <strong id="total">₹0.00</strong></div><div class="form-actions"><a href="{{url_for('billing')}}" class="btn btn-light">Cancel</a><button class="btn btn-primary">Create Bill</button></div></form></div>{% endblock %}

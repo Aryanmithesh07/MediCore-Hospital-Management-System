@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block title %}Dashboard | MediCare{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Dashboard</h1><p>Hospital overview and today's activities.</p></div><a class="btn btn-primary" href="{{ url_for('add_appointment') }}"><i class="fa-solid fa-plus"></i> Book Appointment</a></div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-icon"><i class="fa-solid fa-hospital-user"></i></div><div><span>Total Patients</span><h2>{{ stats.patients }}</h2></div></div>
+<div class="stat-card"><div class="stat-icon"><i class="fa-solid fa-user-doctor"></i></div><div><span>Total Doctors</span><h2>{{ stats.doctors }}</h2></div></div>
+<div class="stat-card"><div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div><div><span>Today's Appointments</span><h2>{{ stats.appointments }}</h2></div></div>
+<div class="stat-card"><div class="stat-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div><div><span>Paid Revenue</span><h2>₹{{ "%.2f"|format(stats.revenue) }}</h2></div></div>
+</div>
+<div class="quick-grid">
+<a href="{{ url_for('add_patient') }}" class="quick"><i class="fa-solid fa-user-plus"></i><div><b>Register Patient</b><small>Add a new patient</small></div></a>
+<a href="{{ url_for('add_doctor') }}" class="quick"><i class="fa-solid fa-user-doctor"></i><div><b>Add Doctor</b><small>Create doctor profile</small></div></a>
+<a href="{{ url_for('add_bill') }}" class="quick"><i class="fa-solid fa-file-invoice"></i><div><b>Create Bill</b><small>Generate payment bill</small></div></a>
+<a href="{{ url_for('add_prescription') }}" class="quick"><i class="fa-solid fa-prescription-bottle"></i><div><b>Prescription</b><small>Add prescription</small></div></a>
+</div>
+<div class="card-panel"><div class="panel-head"><h3>Recent Appointments</h3><a href="{{ url_for('appointments') }}">View all</a></div>
+<div class="table-responsive"><table class="table align-middle"><thead><tr><th>Patient</th><th>Doctor</th><th>Date</th><th>Time</th><th>Status</th></tr></thead><tbody>
+{% for a in recent %}<tr><td><b>{{ a.patient_name }}</b></td><td>{{ a.doctor_name }}</td><td>{{ a.appointment_date }}</td><td>{{ a.appointment_time }}</td><td><span class="status {{ a.status|lower }}">{{ a.status }}</span></td></tr>
+{% else %}<tr><td colspan="5" class="empty">No appointments yet.</td></tr>{% endfor %}
+</tbody></table></div></div>
+{% endblock %}

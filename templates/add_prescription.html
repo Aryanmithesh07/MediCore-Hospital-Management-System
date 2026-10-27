@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Add Prescription | MediCare{% endblock %}{% block content %}
+<div class="page-head"><div><h1>Add Prescription</h1><p>Record medication for a patient.</p></div></div><div class="card-panel form-card"><form method="post"><div class="form-grid">
+<div><label>Patient *</label><select name="patient_id" required><option value="">Select patient</option>{% for p in patients %}<option value="{{p.id}}">{{p.name}} — {{p.patient_code}}</option>{% endfor %}</select></div>
+<div><label>Doctor *</label><select name="doctor_id" required><option value="">Select doctor</option>{% for d in doctors %}<option value="{{d.id}}">{{d.name}}</option>{% endfor %}</select></div>
+<div><label>Medicine *</label><input name="medicine" required placeholder="Medicine name"></div><div><label>Dosage</label><input name="dosage" placeholder="e.g. 1 tablet twice daily"></div>
+<div><label>Duration</label><input name="duration" placeholder="e.g. 5 days"></div><div class="full"><label>Instructions</label><textarea name="instructions" rows="3" placeholder="After food, before sleep, etc."></textarea></div>
+</div><div class="form-actions"><a href="{{url_for('prescriptions')}}" class="btn btn-light">Cancel</a><button class="btn btn-primary">Save Prescription</button></div></form></div>{% endblock %}
