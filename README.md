@@ -1,6 +1,6 @@
 # Hospital Management System
 
-Live Demo: [https://github.com/greexhma/Hospital-Management-System#hospital-management-system](https://greexhma.github.io/MediCare-Hospital-Management-System/)
+Live Demo: 
 
 A modern and responsive Hospital Management System built using Python, Flask, SQLite, HTML, CSS, and JavaScript. This application helps manage hospital operations such as patient records, doctor details, appointments, billing, prescriptions, and medical history.
 
