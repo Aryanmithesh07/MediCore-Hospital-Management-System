@@ -1,6 +1,6 @@
 {% extends "base.html" %}{% block title %}Add Doctor | MediCare{% endblock %}{% block content %}
-<div class="page-head"><div><h1>Add Doctor</h1><p>Create a doctor profile.</p></div></div><div class="card-panel form-card"><form method="post"><div class="form-grid">
-<div><label>Full Name *</label><input name="name" required></div><div><label>Specialization</label><input name="specialization" placeholder="e.g. Cardiology"></div>
-<div><label>Department</label><input name="department"></div><div><label>Phone</label><input name="phone"></div>
-<div><label>Email</label><input name="email" type="email"></div><div><label>Availability</label><input name="availability" placeholder="Mon-Fri 9 AM - 2 PM"></div>
+<div class="page-head"><div><h1>{{ 'Edit Doctor' if editing else 'Add Doctor' }}</h1><p>Maintain the doctor profile and availability.</p></div></div><div class="card-panel form-card"><form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><div class="form-grid">
+<div><label>Full Name *</label><input name="name" value="{{ doctor.name if doctor else '' }}" required maxlength="120"></div><div><label>Specialization</label><input name="specialization" value="{{ doctor.specialization if doctor else '' }}" placeholder="e.g. Cardiology" maxlength="120"></div>
+<div><label>Department</label><input name="department" value="{{ doctor.department if doctor else '' }}" maxlength="120"></div><div><label>Phone</label><input name="phone" value="{{ doctor.phone if doctor else '' }}" maxlength="40"></div>
+<div><label>Email</label><input name="email" type="email" value="{{ doctor.email if doctor else '' }}" maxlength="254"></div><div><label>Availability</label><input name="availability" value="{{ doctor.availability if doctor else '' }}" placeholder="Mon-Fri 9 AM - 2 PM" maxlength="200"></div>
 </div><div class="form-actions"><a href="{{url_for('doctors')}}" class="btn btn-light">Cancel</a><button class="btn btn-primary">Add Doctor</button></div></form></div>{% endblock %}
