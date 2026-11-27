@@ -1,10 +1,6 @@
 # MediCore Hospital Management System
 
-<<<<<<< HEAD
 A Flask and SQLite hospital administration demo for patient and doctor records, appointments, prescriptions, medical history, and billing. The interface uses server-rendered Jinja templates with Bootstrap, custom CSS, and small JavaScript helpers.
-=======
-Live Demo: 
->>>>>>> b02b56d606086769c5385d71a34f785e37a3ee7d
 
 ## Features
 
